@@ -2,7 +2,7 @@
 // Allow requests from local dev and Vercel frontend
 $allowedOrigins = [
     'http://localhost:5173', // local development
-    'https://frontendfinalblogflow-git-main-rochelleuchis-projects.vercel.app', // replace with your Vercel URL
+    'https://frontendfinalblogflow.vercel.app/', // replace with your Vercel URL
 ];
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';

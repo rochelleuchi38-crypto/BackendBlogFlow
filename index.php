@@ -1,27 +1,9 @@
 <?php
-// Allow requests from local dev and Vercel frontend
-$allowedOrigins = [
-    'http://localhost:5173', // local development
-    'https://frontend-blog-flow.vercel.app', // replace with your Vercel URL
-];
-
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-
-if (in_array($origin, $allowedOrigins)) {
-    header("Access-Control-Allow-Origin: $origin");
-    header(header: "Access-Control-Allow-Credentials: true");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
-}
-
-// Handle preflight requests
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit;
-}
-
-
 define('PREVENT_DIRECT_ACCESS', TRUE);
+
+// Include and initialize CORS middleware
+require_once 'app/http/middleware/CorsMiddleware.php';
+new \App\Http\Middleware\CorsMiddleware();
 date_default_timezone_set('Asia/Manila');
 /**
  * ------------------------------------------------------------------

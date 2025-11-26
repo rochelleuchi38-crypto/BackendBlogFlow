@@ -1,6 +1,11 @@
 <?php
 define('PREVENT_DIRECT_ACCESS', TRUE);
 
+// Set error reporting for development
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Include and initialize CORS middleware
 require_once 'app/http/middleware/CorsMiddleware.php';
 new \App\Http\Middleware\CorsMiddleware();
